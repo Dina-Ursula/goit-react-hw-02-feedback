@@ -11,14 +11,42 @@ class App extends Component {
     bad: 0,
   };
 
-  clickChoice() {
-    console.log('hello');
-  }
-  countTotalFeedback() {
-    console.log('bye');
-  }
+  clickChoice = option => {
+    switch (option) {
+      case 'Good':
+        this.setState(prevState => {
+          return {
+            good: prevState.good + 1,
+          };
+        });
+
+        break;
+    }
+    switch (option) {
+      case 'Neutral':
+        this.setState(prevState => {
+          return {
+            neutral: prevState.neutral + 1,
+          };
+        });
+        break;
+    }
+    switch (option) {
+      case 'Bad':
+        this.setState(prevState => {
+          return {
+            bad: prevState.bad + 1,
+          };
+        });
+        break;
+    }
+  };
+
+  countTotalFeedback = () => {
+    return this.state.good + this.state.neutral + this.state.bad;
+  };
   countPositiveFeedbackPercentage() {
-    console.log('good day');
+    return Math.round((this.state.good / this.countTotalFeedback()) * 100) || 0;
   }
 
   render() {
@@ -33,7 +61,7 @@ class App extends Component {
           title={textFeedback}
           child={
             <FeedbackOptions
-              options={['good', 'neutral', 'bad']}
+              options={['Good', 'Neutral', 'Bad']}
               onLeaveFeedback={this.clickChoice}
             />
           }
@@ -41,13 +69,17 @@ class App extends Component {
         <Section
           title={textStatistics}
           child={
-            <Statistics
-              good={good}
-              neutral={neutral}
-              bad={bad}
-              total={this.countTotalFeedback}
-              positivePercentage={this.countPositiveFeedbackPercentage}
-            />
+            this.countTotalFeedback() === 0 ? (
+              <Notification message="There is no feedback"></Notification>
+            ) : (
+              <Statistics
+                good={good}
+                neutral={neutral}
+                bad={bad}
+                total={this.countTotalFeedback()}
+                positivePercentage={this.countPositiveFeedbackPercentage()}
+              />
+            )
           }
         />
       </>

@@ -4,15 +4,17 @@ import ProtoType from 'prop-types';
 
 const FeedbackOptions = ({ options, onLeaveFeedback }) => {
   return (
-    <ul>
+    <div>
       {options.map(option => (
-        <li key={option}>
-          <button value={option} onClick={() => onLeaveFeedback(option)}>
-            {option}
-          </button>
-        </li>
+        <button
+          key={option}
+          value={option}
+          onClick={() => onLeaveFeedback(option)}
+        >
+          {option}
+        </button>
       ))}
-    </ul>
+    </div>
   );
 };
 export default FeedbackOptions;
