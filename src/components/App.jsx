@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 import FeedbackOptions from './Feedback/FeedbackOptions';
 import Section from './Section/Section';
 import Statistics from './Statistics/Statistics';
@@ -45,14 +46,12 @@ class App extends Component {
   countTotalFeedback = () => {
     return this.state.good + this.state.neutral + this.state.bad;
   };
-  countPositiveFeedbackPercentage() {
+  countPositiveFeedbackPercentage = () => {
     return Math.round((this.state.good / this.countTotalFeedback()) * 100) || 0;
-  }
+  };
 
   render() {
-    const { good } = this.state;
-    const { neutral } = this.state;
-    const { bad } = this.state;
+    const { good, neutral, bad } = this.state;
     const textFeedback = 'Please leave feedback';
     const textStatistics = 'Statistics';
     return (
@@ -70,7 +69,7 @@ class App extends Component {
           title={textStatistics}
           child={
             this.countTotalFeedback() === 0 ? (
-              <Notification message="There is no feedback"></Notification>
+              <Notification message="There is no feedback" />
             ) : (
               <Statistics
                 good={good}

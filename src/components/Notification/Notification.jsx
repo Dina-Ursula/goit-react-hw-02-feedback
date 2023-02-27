@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 export default Notification = ({ message }) => {
   return (
@@ -8,10 +9,6 @@ export default Notification = ({ message }) => {
   );
 };
 
-// <Statistics
-//   good={good}
-//   neutral={neutral}
-//   bad={bad}
-//   total={this.countTotalFeedback()}
-//   positivePercentage={this.countPositiveFeedbackPercentage()}
-// />
+Notification.propTypes = {
+  message: PropTypes.string.isRequired,
+};
