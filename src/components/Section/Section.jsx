@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-
+import { Title, SectionChild, Container } from './Section.styled';
 const Sections = ({ title, child }) => {
   return (
-    <>
-      <h3>{title}</h3>
-      <div>{child}</div>
-    </>
+    <Container>
+      <Title>{title}</Title>
+      <SectionChild>{child}</SectionChild>
+    </Container>
   );
 };
 export default Sections;

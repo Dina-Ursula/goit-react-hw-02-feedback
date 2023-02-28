@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { MessageSection, Message } from './Notificayion.styled';
 
 export default Notification = ({ message }) => {
   return (
-    <div>
-      <p>{message}</p>
-    </div>
+    <MessageSection>
+      <Message>{message}</Message>
+    </MessageSection>
   );
 };
 
