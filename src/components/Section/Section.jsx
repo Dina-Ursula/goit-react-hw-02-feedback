@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Title, SectionChild, Container } from './Section.styled';
+
 const Sections = ({ title, child }) => {
   return (
     <Container>
